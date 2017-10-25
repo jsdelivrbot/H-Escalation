@@ -1,0 +1,267 @@
+html,
+body {
+    height: 100%;
+    background-color: #FFFFFF;
+    font-family: Garamond;
+    font-size:15px;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;    
+    padding: 0 0 60px;
+    font-weight: bold;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #FFFFFF;
+    position: relative;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.wrap > .navbar-inverse.navbar-fixed-top {
+    background-color: #b58b00;
+}
+
+.wrap > .container {
+    padding: 70px 10px 20px;
+    padding-bottom: 500px;
+}
+
+
+.footer.footer {
+    color: black;
+    background-color: transparent;
+}
+
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+    font-size:20px;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+    background-color: #FFFFFF;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+
+/* align the logout "link" (button in form) of the navbar */
+.nav li > form > button.logout {
+    padding: 20px;
+    border: none;
+}
+
+@media(max-width:767px) {
+    .nav li > form > button.logout {
+        display:block;
+        text-align: left;
+        width: 100%;
+        padding: 10px 15px;
+    }
+}
+
+.nav > li > form > button.logout:focus,
+.nav > li > form > button.logout:hover {
+    text-decoration: none;
+}
+
+.nav > li > form > button.logout:focus {
+    outline: none;
+
+}
+
+p.sub {
+    font-size: 15px;
+    color: black;
+    text-align: center; 
+}
+
+.pull-left {
+    color: #FFFFFF;
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+
+/* sidebar*/
+
+.nav-sidebar {
+  margin-top: 0px;
+  width: 20%;
+  padding-bottom: 0px;
+  position: absolute;
+}
+
+.nav-sidebar > li > a {
+  padding-right: 80px;
+  padding-left: 20px;
+  font-style: bold;
+  color: #b58b00; /* sidebar color*/
+}
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:focus {
+    background-color: #b58b00; /*yellow*/
+}
+.nav-sidebar > .active > a:hover {
+   /* background-color: #7D6B69; /*brown*/
+}
+
+.employee1-create, .employee1-view, .employee1-index, .employee1-update {
+    width: 100%;
+    padding-left: 300px;
+    position: inline;
+    color: #b58b00;
+ }
+
+.ticket-create, .ticket-view, .ticket-index, .ticket-update {
+    width: 100%;
+    padding-left: 300px;
+    position: inline;
+    color: #b58b00;
+ }
+
+.department1-create, .department1-view, .department1-index, .department1-update {
+    width: 100%;
+    padding-left: 300px;
+    position: inline;
+    color: #b58b00;
+ }
+
+.escalated-ticket-create, .escalated-ticket-view, .escalated-ticket-index, .escalated-ticket-update {
+    width: 100%;
+    position: inline;
+    color: #b58b00;
+ }
+ 
+.position1-create, .position1-view, .position1-index, .position1-update {
+    width: 100%;
+    padding-left: 300px;
+    position: inline;
+    color: #b58b00;
+ }
+ 
+ .hierarchy-level-create, .hierarchy-level-view, .hierarchy-level-index, .hierarchy-level-update {
+    width: 100%;
+    padding-left: 300px;
+    position: inline;
+    color: #b58b00;
+ }
+
+/* heading - EMM welcome page */
+.intro {
+    font-style: bold;
+    font-weight: bolder;
+    font-size: 50px;
+    font-family: garamond;
+    top: 130px;
+    position: relative;
+    color: #b58b00;
+}
+
+.logo {
+    position: relative;
+    top: 50px;
+}
+
+    /*butttons*/
+
+.button-container > .sbuttons {
+    position: relative;
+    top: 200px;
+    right: 30px;
+
+ }
+
+.button-container > .ebuttons {
+    position: relative;
+    top: 200px;
+    left: 30px;
+ }
+
+.button-container {
+    width: 80%;
+}
+
+
+.escalated-ticket-form {
+      width: 100%;
+      text-align: center;
+      padding-left: 20%;
+      padding-right: 20%;
+    }
+
+
+ .escalated-ticket-form > select > option {
+    font-size: 20px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+ }
