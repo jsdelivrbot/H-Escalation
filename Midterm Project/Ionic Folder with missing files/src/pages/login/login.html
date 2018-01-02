@@ -1,0 +1,22 @@
+<ion-content class="background">
+	<ion-label  style="padding-top: 89px"></ion-label>
+	<ion-card>
+		<ion-card-header>
+			Taal Vista Hotel<br>
+			Escalation Management System
+		</ion-card-header>
+		<ion-card-content>
+			<ion-list no-line>
+				<ion-item>
+					<ion-input type="text" [(ngModel)]="user.email" placeholder="Username" ></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-input type="password" [(ngModel)]="user.password" placeholder="Password" ></ion-input>
+				</ion-item>
+				
+				<button ion-button block  color="secondary" (click)="login(user)">Log in</button>
+				
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
