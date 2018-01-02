@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center="true">
+      <ion-icon name="clock"></ion-icon>
+      Taal Vista Hotel ESU
+    </ion-title>
+
+    <ion-buttons end>
+
+      <button ion-button icon-only (click)="addTicket()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<div class="tabs">
+  <a class="tab-item">
+    Home
+  </a>
+
+  <a class="tab-item">
+    Open Tickets
+  </a>
+</div>
+
+<ion-content bgcolor="#003249">
+
+
+      <ion-list>
+  
+        <ion-item-divider color="blue"><b>Today</b></ion-item-divider>
+          <ion-item-sliding *ngFor="let ticket of tickets | async" >
+            <ion-item style="background-color: #fafff1; font-size:10pt;">
+
+
+          
+
+          <ion-card>
+            <ion-card-header>
+            <table cellspacing="2" width="100%">
+            <tr>
+              <td cellpadding=3><b>{{ticket.description}}</b> <br> <br></td>
+            </tr>
+
+            <tr style=" text-align:center;border:3px solid #00a50f; color:#00a50f; -moz-border-radius:5px; border-radius:5px;">
+                <td>{{ticket.status}}</td>
+            </tr>
+
+            <tr style=" text-align:center;border:3px solid #00a0e2; color:#00a0e2; -moz-border-radius:5px; border-radius:5px;">
+                <td>{{ticket.priority}}</td>
+            </tr>
+            </table>
+            </ion-card-header>
+
+                <ion-card-content>
+                 
+
+          <table padding-left="2px" width="90%" style="table-layout: fixed; float:left;border-collapse: separate; border-spacing: 2px;">
+
+            <tr>
+                <td width="70%" style="font-size:10pt;word-wrap:break-word"><b></b>
+                </td>
+            </tr>
+
+            <tr>
+              <td width="70%"><i>{{ticket.room}}</i></td>
+              
+            </tr>
+
+            <tr style="border-collapse: separate; border-spacing: 2px;">
+              <td width="70%"> {{ticket.created}}</td>
+              
+            </tr>
+
+            <tr>
+              <td width="70%">{{ ticket.owner}}</td>
+              <td width="30%"><b>{{ ticket.due}}</b></td>
+            </tr>
+
+
+          </table>
+
+                </ion-card-content>
+
+            </ion-card>
+
+
+          <!-- <ion-label>Select options</ion-label>
+           <ion-select>
+             <ion-option value="present">Present</ion-option>
+             <ion-option value="absent">Absent</ion-option>
+             <ion-datetime displayFormat="MMM DD, h:mm A" [(ngModel)]="due"></ion-datetime>
+           </ion-select> -->
+
+        </ion-item>
+
+    
+        <ion-item-options side="right" padding >
+
+          <button ion-button color="secondary" (click)="editTicket(ticket)" style="border:3px solid white;-moz-border-radius:5px; border-radius:5px;">
+            <ion-icon name="md-create"> Doing</ion-icon>
+          </button>
+
+          <button ion-button color="danger" (click)="deleteTicket(ticket)" style="border:3px solid white; -moz-border-radius:5px; border-radius:5px;">
+            <ion-icon name="md-trash"> End</ion-icon>
+          </button>
+
+        </ion-item-options> <!-- end slide right deleteTicket(ticket.$key)--> 
+
+      </ion-item-sliding>
+
+
+    </ion-list>
+</ion-content>
