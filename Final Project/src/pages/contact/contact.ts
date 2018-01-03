@@ -13,12 +13,17 @@ import { AboutPage } from '../about/about';
 export class ContactPage {
 
     tickets: FirebaseListObservable<any[]>;
-    due: String = new Date().toISOString();
+    
 
     constructor(private afAuth: AngularFireAuth,
     public alertCtrl: AlertController, public navCtrl: NavController, public modalCtrl:ModalController ,db: AngularFireDatabase) {
 
-        this.tickets = db.list('/ticket');
+        this.tickets = db.list('/ticket',{
+                  query: {
+                    orderByChild: 'due',
+                    startAt: "E", endAt:"Z"
+                  }
+                });
     }
 
     deleteTicket(ticketID): void {

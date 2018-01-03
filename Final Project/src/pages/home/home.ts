@@ -48,21 +48,21 @@ export class HomePage {
             title: "Escalated Ticket Details",
             message: "Enter Ticket Details",
             inputs: [
+               {
+                    name: 'description',
+                    placeholder: "Description"
+                },
                 {
                     name: 'room',
-                    placeholder: "Complaint Location"
+                    placeholder: "Location"
                 },
                 {
                     name: 'owner',
-                    placeholder: "Ticket Owner"
+                    placeholder: "Ticket Requester"
                 },
                 {
                     name: 'status',
                     placeholder: "Ticket Status"
-                },
-                {
-                    name: 'due',
-                    placeholder: "Ticket Limit"
                 },
                 {
                     name: 'priority',
@@ -73,8 +73,7 @@ export class HomePage {
                     placeholder: "Date Created"
                 },
                 {
-                    name: 'description',
-                    placeholder: "Description"
+                    name: 'due'
                 },
             ],
 
@@ -183,8 +182,8 @@ editTicket(ticket): void {
                 {
                    
                     type: 'radio',
-                    label: 'Alice Smith (HK Staff 2)',
-                    value: 'Alice Smith'
+                    label: 'Francis Smith (HK Staff 2)',
+                    value: 'Francis Smith'
                 },
                 {
                    
