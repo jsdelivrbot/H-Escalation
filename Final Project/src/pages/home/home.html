@@ -1,19 +1,18 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title text-center="true">
+<ion-header> 
+  <ion-navbar color="one">
+    <ion-title text-center="true" style="font-color:black">
       <ion-icon name="clock"></ion-icon>
       Taal Vista Hotel ESU
     </ion-title>
 
     <ion-buttons end>
-
       <button ion-button icon-only (click)="addTicket()">
         <ion-icon name="add"></ion-icon>
       </button>
-
     </ion-buttons>
 
   </ion-navbar>
+  <ion-item-divider color="five" style="text-align: center;"><b>Unassigned Tickets</b></ion-item-divider>
 </ion-header>
 
 <div class="tabs">
@@ -26,62 +25,54 @@
   </a>
 </div>
 
-<ion-content bgcolor="#003249">
+<ion-content > 
 
 
       <ion-list>
-  
-        <ion-item-divider color="blue"><b>Today</b></ion-item-divider>
-          <ion-item-sliding *ngFor="let ticket of tickets | async" >
-            <ion-item style="background-color: #fafff1; font-size:10pt;">
-
 
           
+          <ion-item-sliding *ngFor="let ticket of tickets | async" >
+            <ion-item style="font-size:10pt;">
 
-          <ion-card>
+          <ion-card style="border:3px solid #0b354d;" text-center="true">
             <ion-card-header>
-            <table cellspacing="2" width="100%">
-            <tr>
-              <td cellpadding=3><b>{{ticket.description}}</b> <br> <br></td>
-            </tr>
-
-            <tr style=" text-align:center;border:3px solid #00a50f; color:#00a50f; -moz-border-radius:5px; border-radius:5px;">
-                <td>{{ticket.status}}</td>
-            </tr>
-
-            <tr style=" text-align:center;border:3px solid #00a0e2; color:#00a0e2; -moz-border-radius:5px; border-radius:5px;">
-                <td>{{ticket.priority}}</td>
-            </tr>
-            </table>
+                <table width="100%">
+                  <tr>
+                    <td><b>{{ticket.description}}</b></td>
+                  </tr>
+                  <tr>
+                      <td><b>{{ticket.room}}</b></td>
+                  </tr>
+                </table> 
+                
             </ion-card-header>
 
-                <ion-card-content>
-                 
+                <ion-card-content >
 
-          <table padding-left="2px" width="90%" style="table-layout: fixed; float:left;border-collapse: separate; border-spacing: 2px;">
+                 <table width="100%">
+                      <tr style="border-collapse: separate; border-spacing: 2px;">
+                        <td width="50%"><b> {{ticket.created}} </b></td>
+                      </tr>
+                  </table> 
 
-            <tr>
-                <td width="70%" style="font-size:10pt;word-wrap:break-word"><b></b>
-                </td>
-            </tr>
+                <table width="100%" center>
+                  <tr>
+                      <td style=" text-align:center;border:3px solid #887136; color:black; width:50%">{{ticket.status}}</td>
+                      <td style=" text-align:center;border:3px solid #887136; color:black; width:50%">{{ticket.priority}}</td>
+                  </tr>
+                </table>
 
-            <tr>
-              <td width="70%"><i>{{ticket.room}}</i></td>
-              
-            </tr>
+                  <table width="100%" >
+                    <tr>
+                      <td width="50%">{{ ticket.owner}} <br></td>
+                      <td>Unassigned</td>
+                    </tr>
 
-            <tr style="border-collapse: separate; border-spacing: 2px;">
-              <td width="70%"> {{ticket.created}}</td>
-              
-            </tr>
+                    <tr>
+                      
+                    </tr>
 
-            <tr>
-              <td width="70%">{{ ticket.owner}}</td>
-              <td width="30%"><b>{{ ticket.due}}</b></td>
-            </tr>
-
-
-          </table>
+                  </table>
 
                 </ion-card-content>
 
@@ -99,14 +90,19 @@
 
     
         <ion-item-options side="right" padding >
-
-          <button ion-button color="secondary" (click)="editTicket(ticket)" style="border:3px solid white;-moz-border-radius:5px; border-radius:5px;">
-            <ion-icon name="md-create"> Doing</ion-icon>
+          <button ion-button color="blue" (click)="assignTicket()" style="border:3px solid white; -moz-border-radius:5px; border-radius:5px;">
+                      <ion-icon name="md-create"></ion-icon>Assign
           </button>
+          
+          <!--<button ion-button color="secondary" (click)="editTicket(ticket)" style="border:3px solid white;-moz-border-radius:5px; border-radius:5px;">
+            <ion-icon name="md-create"> </ion-icon>Doing
+          </button>-->
 
           <button ion-button color="danger" (click)="deleteTicket(ticket)" style="border:3px solid white; -moz-border-radius:5px; border-radius:5px;">
-            <ion-icon name="md-trash"> End</ion-icon>
+            <ion-icon name="md-trash"></ion-icon>Delete
           </button>
+
+          
 
         </ion-item-options> <!-- end slide right deleteTicket(ticket.$key)--> 
 
