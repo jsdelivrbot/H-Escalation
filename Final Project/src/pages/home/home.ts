@@ -18,9 +18,18 @@ export class HomePage {
     constructor(private afAuth: AngularFireAuth,
     public alertCtrl: AlertController, public navCtrl: NavController, public modalCtrl:ModalController ,db: AngularFireDatabase) {
 
-        this.tickets = db.list('/ticket');
+        this.tickets = db.list('/ticket',{
+                  query: {
+                    orderByChild: 'due',
+                    equalTo: ''
+                  }
+                });
         this.assigneds = db.list('/assigned');
     }
+
+  
+        
+  
 /*
     closeTicket(){
        
@@ -154,9 +163,35 @@ editTicket(ticket): void {
             title: "Assign Ticket",
             inputs: [
                  {
-                    name:'due',
-                    placeholder: ticket.due
-                }
+                   
+                    type: 'radio',
+                    label: 'Supervisor (Me)',
+                    value: 'Supervisor'
+                },
+                {
+                  
+                    type: 'radio',
+                    label: 'Department Manager (Escalate)',
+                    value: 'Department Manager'
+                },
+                {
+                   
+                    type: 'radio',
+                    label: 'Mike Cruz (HK Staff 1)',
+                    value: 'Mike Cruz'
+                },
+                {
+                   
+                    type: 'radio',
+                    label: 'Alice Smith (HK Staff 2)',
+                    value: 'Alice Smith'
+                },
+                {
+                   
+                    type: 'radio',
+                    label: 'Lois Lane (HK Staff 3)',
+                    value: 'Lois Lane'
+                },
             ],
 
             buttons: [
@@ -165,13 +200,13 @@ editTicket(ticket): void {
                     handler: data => {
                           let newDue:String = ticket.due;
 
-                          if(data.due == ""){
-                            newDue = data.due;
+                          if(data != ""){
+                            newDue = data;
                           }
 
                         this.tickets.update(ticket.$key, {
                             due: newDue
-                        })
+                        });
                     }
                 },
                 {

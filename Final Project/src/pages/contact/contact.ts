@@ -12,23 +12,23 @@ import { AboutPage } from '../about/about';
 })
 export class ContactPage {
 
-    assigneds: FirebaseListObservable<any[]>;
+    tickets: FirebaseListObservable<any[]>;
     due: String = new Date().toISOString();
 
     constructor(private afAuth: AngularFireAuth,
     public alertCtrl: AlertController, public navCtrl: NavController, public modalCtrl:ModalController ,db: AngularFireDatabase) {
 
-        this.assigneds = db.list('/assigned');
+        this.tickets = db.list('/ticket');
     }
 
-    deleteTicket(assignedID): void {
+    deleteTicket(ticketID): void {
         let prompt = this.alertCtrl.create({
             title: "End the task now.",
             buttons: [
                 {
                     text: "Submit",
                     handler: data => {
-                        this.assigneds.remove(assignedID);
+                        this.tickets.remove(ticketID);
                         console.log("Submit button clicked");
                     }
                 },
@@ -48,9 +48,9 @@ export class ContactPage {
     }
 
 
-editTicket(assigned): void {
+editTicket(ticket): void {
 
-        this.assigneds.update(assigned.$key, {
+        this.tickets.update(ticket.$key, {
             status: "In Progress",
          });
      console.log("Submit button clicked");
