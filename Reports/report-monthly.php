@@ -63,8 +63,9 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-                  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                  <p class="centered"><img src="assets/img/acc.jpg" class="img-circle" width="60"></p>
                   <h5 class="centered">Alice Marquez</h5>
+                  <h5 class="centered">(Executive)</h5>
                     
                   <li class="mt">
                       <a href="index.html">
@@ -145,7 +146,7 @@ xLabelAngle:'60',
       <!--footer start-->
       <footer class="site-footer">
           <div class="text-center">
-              2017 - Taal Vista Hotel
+              <center>2017 - Taal Vista Hotel</center>
               <a href="morris.html#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>

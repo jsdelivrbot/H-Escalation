@@ -21,55 +21,6 @@ while($row = mysqli_fetch_array($result1))
 $chart_data1 = substr($chart_data1, 0, -2);
 ?>
 
-
-
-
-
-<?php 
-//index.php
-$connect = mysqli_connect("localhost", "root", "", "testing");
-$query = "SELECT * FROM account2";
-$query1 = "SELECT * FROM account3";
-$result = mysqli_query($connect, $query);
-$result1 = mysqli_query($connect, $query1);
-$chart_data = '';
-$chart_data1 = '';
-while($row = mysqli_fetch_array($result))
-{
- $chart_data .= "{ year:'".$row["year"]."', profit:".$row["profit"].", purchase:".$row["purchase"].", sale:".$row["sale"]."}, ";
-}
-$chart_data = substr($chart_data, 0, -2);
-
-while($row = mysqli_fetch_array($result1))
-{
- $chart_data1 .= "{ year:'".$row["year"]."', profit:".$row["profit"].", purchase:".$row["purchase"].", sale:".$row["sale"]."}, ";
-}
-$chart_data1 = substr($chart_data1, 0, -2);
-?>
-
-<?php 
-//index.php
-$connect = mysqli_connect("localhost", "root", "", "testing");
-$query = "SELECT * FROM account";
-$query1 = "SELECT * FROM account1";
-$result = mysqli_query($connect, $query);
-$result1 = mysqli_query($connect, $query1);
-$chart_data = '';
-$chart_data1 = '';
-while($row = mysqli_fetch_array($result))
-{
- $chart_data .= "{ year:'".$row["year"]."', profit:".$row["profit"].", purchase:".$row["purchase"].", sale:".$row["sale"]."}, ";
-}
-$chart_data = substr($chart_data, 0, -2);
-
-while($row = mysqli_fetch_array($result1))
-{
- $chart_data1 .= "{ year:'".$row["year"]."', profit:".$row["profit"].", purchase:".$row["purchase"].", sale:".$row["sale"]."}, ";
-}
-$chart_data1 = substr($chart_data1, 0, -2);
-?>
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -135,8 +86,9 @@ $chart_data1 = substr($chart_data1, 0, -2);
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-                  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                  <p class="centered"><img src="assets/img/acc.jpg" class="img-circle" width="60"></p>
                   <h5 class="centered">Alice Marquez</h5>
+                  <h5 class="centered">(Executive)</h5>
                     
                   <li class="mt">
                       <a href="index.html">
@@ -211,7 +163,7 @@ $chart_data1 = substr($chart_data1, 0, -2);
       <!--footer start-->
       <footer class="site-footer">
           <div class="text-center">
-              2017 - Taal Vista Hotel
+              <center>2017 - Taal Vista Hotel</center>
               <a href="morris.html#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
