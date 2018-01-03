@@ -13,12 +13,13 @@ import { AboutPage } from '../about/about';
 export class HomePage {
 
     tickets: FirebaseListObservable<any[]>;
-    due: String = new Date().toISOString();
-
+    assigneds: FirebaseListObservable<any[]>
+  
     constructor(private afAuth: AngularFireAuth,
     public alertCtrl: AlertController, public navCtrl: NavController, public modalCtrl:ModalController ,db: AngularFireDatabase) {
 
         this.tickets = db.list('/ticket');
+        this.assigneds = db.list('/assigned');
     }
 /*
     closeTicket(){
@@ -82,6 +83,16 @@ export class HomePage {
                             description: data.description
 
                         });
+                        this.assigneds.push({
+                            room: data.room,
+                            owner: data.owner,
+                            status: data.status,
+                            due: data.due,
+                            priority: data.priority,
+                            created: data.created,
+                            description: data.description
+
+                        });
                         console.log("Submit button clicked");
                     }
                 },
@@ -131,13 +142,52 @@ export class HomePage {
 editTicket(ticket): void {
 
         this.tickets.update(ticket.$key, {
-            status: "Doing",
+            due: "Open",
          });
      console.log("Submit button clicked");
     }
 
 
 
+    assignTicket(ticket): void {
+        let prompt = this.alertCtrl.create({
+            title: "Assign Ticket",
+            inputs: [
+                 {
+                    name:'due',
+                    placeholder: ticket.due
+                }
+            ],
+
+            buttons: [
+                {
+                    text: "Submit",
+                    handler: data => {
+                          let newDue:String = ticket.due;
+
+                          if(data.due == ""){
+                            newDue = data.due;
+                          }
+
+                        this.tickets.update(ticket.$key, {
+                            due: newDue
+                        })
+                    }
+                },
+                {
+                    text: "Cancel",
+                    handler: data => {
+                        console.log("Cancel button clicked");
+                    }
+                }
+
+            ]
+
+
+        });
+
+        prompt.present();
+    }
 
 
 }
