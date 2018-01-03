@@ -18,9 +18,18 @@ export class HomePage {
     constructor(private afAuth: AngularFireAuth,
     public alertCtrl: AlertController, public navCtrl: NavController, public modalCtrl:ModalController ,db: AngularFireDatabase) {
 
-        this.tickets = db.list('/ticket');
+        this.tickets = db.list('/ticket',{
+                  query: {
+                    orderByChild: 'due',
+                    equalTo: ''
+                  }
+                });
         this.assigneds = db.list('/assigned');
     }
+
+  
+        
+  
 /*
     closeTicket(){
        
@@ -39,21 +48,21 @@ export class HomePage {
             title: "Escalated Ticket Details",
             message: "Enter Ticket Details",
             inputs: [
+               {
+                    name: 'description',
+                    placeholder: "Description"
+                },
                 {
                     name: 'room',
-                    placeholder: "Complaint Location"
+                    placeholder: "Location"
                 },
                 {
                     name: 'owner',
-                    placeholder: "Ticket Owner"
+                    placeholder: "Ticket Requester"
                 },
                 {
                     name: 'status',
                     placeholder: "Ticket Status"
-                },
-                {
-                    name: 'due',
-                    placeholder: "Ticket Limit"
                 },
                 {
                     name: 'priority',
@@ -64,8 +73,7 @@ export class HomePage {
                     placeholder: "Date Created"
                 },
                 {
-                    name: 'description',
-                    placeholder: "Description"
+                    name: 'due'
                 },
             ],
 
@@ -154,9 +162,35 @@ editTicket(ticket): void {
             title: "Assign Ticket",
             inputs: [
                  {
-                    name:'due',
-                    placeholder: ticket.due
-                }
+                   
+                    type: 'radio',
+                    label: 'Supervisor (Me)',
+                    value: 'Supervisor'
+                },
+                {
+                  
+                    type: 'radio',
+                    label: 'Department Manager (Escalate)',
+                    value: 'Department Manager'
+                },
+                {
+                   
+                    type: 'radio',
+                    label: 'Mike Cruz (HK Staff 1)',
+                    value: 'Mike Cruz'
+                },
+                {
+                   
+                    type: 'radio',
+                    label: 'Francis Smith (HK Staff 2)',
+                    value: 'Francis Smith'
+                },
+                {
+                   
+                    type: 'radio',
+                    label: 'Lois Lane (HK Staff 3)',
+                    value: 'Lois Lane'
+                },
             ],
 
             buttons: [
@@ -165,13 +199,13 @@ editTicket(ticket): void {
                     handler: data => {
                           let newDue:String = ticket.due;
 
-                          if(data.due == ""){
-                            newDue = data.due;
+                          if(data != ""){
+                            newDue = data;
                           }
 
                         this.tickets.update(ticket.$key, {
                             due: newDue
-                        })
+                        });
                     }
                 },
                 {

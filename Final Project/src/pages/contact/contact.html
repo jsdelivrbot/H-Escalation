@@ -6,7 +6,7 @@
     </ion-title>
   </ion-navbar>
 
-  <ion-item-divider color="two" style="text-align: center;"><b>Assigned Tickets</b></ion-item-divider>
+  <ion-item-divider color="five" style="text-align: center;"><b>Assigned Tickets</b></ion-item-divider>
 </ion-header>
 
 <div class="tabs">
@@ -25,17 +25,17 @@
       <ion-list>
 
           
-          <ion-item-sliding *ngFor="let assigned of assigneds | async" >
+          <ion-item-sliding *ngFor="let ticket of tickets | async" >
             <ion-item style="font-size:10pt;">
 
           <ion-card style="border:3px solid #0b354d;" text-center="true">
             <ion-card-header>
                 <table width="100%">
                   <tr>
-                    <td><b>{{assigned.description}}</b></td>
+                    <td><b>{{ticket.description}}</b></td>
                   </tr>
                   <tr>
-                      <td><b>{{assigned.room}}</b></td>
+                      <td><b>{{ticket.room}}</b></td>
                   </tr>
                 </table> 
                 
@@ -45,21 +45,21 @@
 
                  <table width="100%">
                       <tr style="border-collapse: separate; border-spacing: 2px;">
-                        <td width="50%"><b> {{assigned.created}} </b></td>
+                        <td width="50%"><b> {{ticket.created}} </b></td>
                       </tr>
                   </table> 
 
                 <table width="100%" center>
                   <tr>
-                      <td style=" text-align:center;border:3px solid #887136; color:black; width:50%">{{assigned.status}}</td>
-                      <td style=" text-align:center;border:3px solid #887136; color:black; width:50%">{{assigned.priority}}</td>
+                      <td style=" text-align:center;border:3px solid #887136; color:black; width:50%">{{ticket.status}}</td>
+                      <td style=" text-align:center;border:3px solid #887136; color:black; width:50%">{{ticket.priority}}</td>
                   </tr>
                 </table>
 
                   <table width="100%" >
                     <tr>
-                      <td width="50%">{{assigned.owner}} <br></td>
-                      <td>{{assigned.due}}</td>
+                      <td width="50%">{{ticket.owner}} <br></td>
+                      <td><ion-icon name="person"></ion-icon> {{ticket.due}}</td>
                     </tr>
 
                     <tr>
@@ -98,7 +98,7 @@
 
           
 
-        </ion-item-options> <!-- end slide right deleteTicket(assigned.$key)--> 
+        </ion-item-options> <!-- end slide right deleteTicket(ticket.$key)--> 
 
       </ion-item-sliding>
 
