@@ -1,38 +1,107 @@
-<ion-header>
-  <ion-navbar color="danger">
-    <ion-title>
-      Charts in Ionic 2
+<ion-header> 
+  <ion-navbar color="one">
+    <ion-title text-center="true" style="font-color:black">
+      <ion-icon name="clock"></ion-icon>
+      Taal Vista Hotel ESU
     </ion-title>
   </ion-navbar>
+
+  <ion-item-divider color="two" style="text-align: center;"><b>Assigned Tickets</b></ion-item-divider>
 </ion-header>
- 
-<ion-content>
- 
-    <ion-card>
-      <ion-card-header>
-        Bar Chart
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #barCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
- 
-    <ion-card>
-      <ion-card-header>
-        Doughnut Chart
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #doughnutCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
- 
-    <ion-card>
-      <ion-card-header>
-        Line Chart
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #lineCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
- 
+
+<div class="tabs">
+  <a class="tab-item">
+    Home
+  </a>
+
+  <a class="tab-item">
+    Open Tickets
+  </a>
+</div>
+
+<ion-content > 
+
+
+      <ion-list>
+
+          
+          <ion-item-sliding *ngFor="let assigned of assigneds | async" >
+            <ion-item style="font-size:10pt;">
+
+          <ion-card style="border:3px solid #0b354d;" text-center="true">
+            <ion-card-header>
+                <table width="100%">
+                  <tr>
+                    <td><b>{{assigned.description}}</b></td>
+                  </tr>
+                  <tr>
+                      <td><b>{{assigned.room}}</b></td>
+                  </tr>
+                </table> 
+                
+            </ion-card-header>
+
+                <ion-card-content >
+
+                 <table width="100%">
+                      <tr style="border-collapse: separate; border-spacing: 2px;">
+                        <td width="50%"><b> {{assigned.created}} </b></td>
+                      </tr>
+                  </table> 
+
+                <table width="100%" center>
+                  <tr>
+                      <td style=" text-align:center;border:3px solid #887136; color:black; width:50%">{{assigned.status}}</td>
+                      <td style=" text-align:center;border:3px solid #887136; color:black; width:50%">{{assigned.priority}}</td>
+                  </tr>
+                </table>
+
+                  <table width="100%" >
+                    <tr>
+                      <td width="50%">{{assigned.owner}} <br></td>
+                      <td>{{assigned.due}}</td>
+                    </tr>
+
+                    <tr>
+                      
+                    </tr>
+
+                  </table>
+
+                </ion-card-content>
+
+            </ion-card>
+
+
+          <!-- <ion-label>Select options</ion-label>
+           <ion-select>
+             <ion-option value="present">Present</ion-option>
+             <ion-option value="absent">Absent</ion-option>
+             <ion-datetime displayFormat="MMM DD, h:mm A" [(ngModel)]="due"></ion-datetime>
+           </ion-select> -->
+
+        </ion-item>
+
+    
+        <ion-item-options side="right" padding >
+          <!--<button ion-button color="blue" (click)="assignTicket()" style="border:3px solid white; -moz-border-radius:5px; border-radius:5px;">
+                      <ion-icon name="md-trash"></ion-icon>Assign
+          </button>-->
+          
+          <button ion-button color="secondary" (click)="editTicket(ticket)" style="border:3px solid white;-moz-border-radius:5px; border-radius:5px;">
+            <ion-icon name="md-create"> </ion-icon>Update<br>Status
+          </button>
+
+          <button ion-button color="danger" (click)="deleteTicket(ticket)" style="border:3px solid white; -moz-border-radius:5px; border-radius:5px;">
+            <ion-icon name="md-trash"></ion-icon>Close<br>Ticket
+          </button>
+
+          
+
+        </ion-item-options> <!-- end slide right deleteTicket(assigned.$key)--> 
+
+      </ion-item-sliding>
+
+
+    </ion-list>
 </ion-content>
